@@ -6,4 +6,5 @@ clean:
 	rm -f opt/shorturl/bin/yxfi-server
 
 opt/shorturl/bin/yxfi-server:
+	mkdir -p opt/shorturl/bin
 	GOOS=linux go build -o $@ github.com/joneskoo/shorturl-go/yxfi-server
