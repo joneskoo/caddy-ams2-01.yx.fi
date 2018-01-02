@@ -22,6 +22,11 @@
             "destination": "/tmp"
         },
         {
+            "type": "file",
+            "source": "backup",
+            "destination": "/tmp"
+        },
+        {
             "type": "shell",
             "environment_vars": [
                 "DEBIAN_FRONTEND=noninteractive",
@@ -31,7 +36,8 @@
                 "scripts/apt-update.sh",
                 "scripts/install-hugo.sh",
                 "scripts/install-caddy.sh",
-                "scripts/install-shorturl.sh"
+                "scripts/install-shorturl.sh",
+                "scripts/restore-backup.sh"
             ]
         }
     ]
