@@ -1,6 +1,6 @@
 .PHONY: packer
 packer: opt/shorturl/bin/yxfi-server backup
-	packer build -on-error=ask -var-file=secrets.json caddy-ams2-01.yx.fi.json
+	packer build -on-error=ask -var-file=secrets.json caddy.json
 
 clean:
 	rm -f opt/shorturl/bin/yxfi-server
