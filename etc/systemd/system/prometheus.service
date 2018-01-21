@@ -1,0 +1,40 @@
+[Unit]
+Description=Prometheus
+Documentation=https://prometheus.io/
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+Restart=on-abnormal
+
+; User and group the process will run as.
+User=prometheus
+Group=prometheus
+
+WorkingDirectory=/opt/prometheus
+ExecStart=/opt/prometheus/prometheus --web.listen-address=127.0.0.1:9090
+
+ReadWriteDirectories=/opt/prometheus/data
+
+; Limit the number of file descriptors; see `man systemd.exec` for more limit settings.
+LimitNOFILE=10240
+LimitNPROC=64
+
+; Use private /tmp and /var/tmp
+PrivateTmp=true
+; Use a minimal /dev
+PrivateDevices=true
+; Hide /home, /root, and /run/user. Nobody will steal your SSH-keys.
+ProtectHome=true
+; Make /usr, /boot, /etc and possibly some more folders read-only.
+ProtectSystem=full
+
+; The following additional security directives only work with systemd v229 or later.
+; They further retrict privileges that can be gained by caddy. Uncomment if you like.
+; Note that you may have to add capabilities required by any plugins in use.
+;CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+;AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
