@@ -37,6 +37,7 @@
                 "scripts/install-hugo.sh",
                 "scripts/install-caddy.sh",
                 "scripts/install-shorturl.sh",
+                "scripts/install-prometheus.sh",
                 "scripts/restore-backup.sh"
             ]
         }
