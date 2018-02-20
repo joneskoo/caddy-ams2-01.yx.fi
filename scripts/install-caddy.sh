@@ -3,6 +3,8 @@
 # Install caddy
 curl -fsSL https://getcaddy.com | bash -s personal http.git,http.hugo,http.prometheus
 
+apt-get install -qyy git
+
 # Install caddy configs
 install -d -v -g www-data -m 0770 -o root /etc/ssl/caddy
 install -d -v -g www-data -m 0750 -o root /etc/caddy /etc/caddy/sites
