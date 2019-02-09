@@ -1,0 +1,24 @@
+# Build new image with packer
+make
+
+size=s-1vcpu-1gb
+region=ams3
+ssh_key=5064156
+image=31113680
+floating_ip=174.138.107.140
+
+doctl compute droplet create "caddy-01.do.yx.fi" --enable-ipv6 --image "$image" --region "$region" --size "$size" --ssh-keys "$ssh_key" --wait --no-header --format "ID,PublicIPv4,PublicIPv6" | read instance_id public_ipv4 public_ipv6
+
+./test.sh $public_ipv4
+
+doctl compute floating-ip-action assign "$floating_ip" "$instance_id"
+
+# 33465512 = caddy-01.do.yx.fi AAAA
+doctl compute domain records update yx.fi --record-id 33465512 --record-data "$public_ipv6"
+
+doctl compute domain records list yx.fi |grep caddy
+
+doctl compute snapshot delete "$image"
+
+doctl compute droplet list
+doctl compute droplet delete ... # previous instance name or id
