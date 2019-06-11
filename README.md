@@ -6,7 +6,6 @@ Building requires creating a secrets.json with the following content:
 
 ```json
 {
-  "do_api_token": "... digital ocean API token ...",
   "GITHUB_WEBHOOK_SECRET": "... secret value used in github web hooks ..."
 }
 ```

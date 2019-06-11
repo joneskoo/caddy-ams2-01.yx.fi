@@ -1,7 +1,7 @@
 #!/bin/bash -xeu
 
 # Install caddy
-curl -fsSL https://getcaddy.com | bash -s personal http.git,http.hugo,http.prometheus
+curl -fsSL https://getcaddy.com | bash -s personal http.git,http.prometheus
 
 apt-get install -qyy git
 

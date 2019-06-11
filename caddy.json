@@ -2,7 +2,6 @@
     "builders": [
         {
             "type": "googlecompute",
-            "account_file": "yxfi-shorturl-211183c748a0.json",
             "project_id": "molten-calling-195820",
             "source_image_family": "debian-9",
             "ssh_username": "packer",

@@ -1,6 +1,6 @@
 #!/bin/bash -xeu
 
-PROMETHEUS_VERSION=2.1.0
+PROMETHEUS_VERSION=2.10.0
 
 useradd -m -d /opt/prometheus -c "Prometheus" -s /bin/bash prometheus
 
